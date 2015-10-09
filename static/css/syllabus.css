@@ -12,29 +12,51 @@ body {
 	margin: 0;
 }
 
+h1 {
+	margin: 10px auto;
+	text-align: center;
+}
 
-table .class-schedule: {
+table.class-schedule {
     background-color: rgb(240,224,178);
     color: rgb(0,102,0);
     margin: 5px;
     padding: 3px;
+    margin: 0 auto;
 }
 
-tr.odd {
+tr {
     /* A little darker */
     background-color: rgb(216,202,160);
 }
 
-tr.even {
-    /* A little lighter */ 
+tr:nth-child(even) {
+    /* A little lighter, for the even numbered row */ 
     background-color: rgb(224,213,179);
 }
 
+tr.now {
+	background-color: rgb(0,255,0);
+}
+
+.class-schedule th {
+	white-space: nowrap;
+}
+
+.class-schedule td {
+	padding: 3px 0;
+}
+
 .class-schedule .week {
-    
     font-weight: bolder;
     font-size: 150%; 
     text-align: center; 
+}
+
+.class-schedule .date {
+	font-family: monospace;
+	text-align: center;
+	white-space: nowrap;
 }
 
 .class-schedule .topic {
@@ -44,9 +66,7 @@ tr.even {
 }
 
 .class-schedule .project {
-    border-left-style: solid;
-    border-left-width: 1px;
-    border-left-color: black; 
-    padding-left: 2ex;
+    padding-left: 3ex;
+    padding-right: 3ex;
     font-style: italic;
 }

@@ -4,6 +4,17 @@ Test program for pre-processing schedule
 import arrow
 
 base = arrow.now()
+today = arrow.now()
+last_week = today.replace(weeks=-1).timestamp
+today = today.timestamp
+
+def inside(date):
+	"""
+	Return whether this is the current week or not
+	"""
+	if last_week < date.timestamp and date.timestamp <= today:
+		return True
+	return False
 
 def process(raw):
     """
@@ -31,7 +42,7 @@ def process(raw):
 
         if field == "begin":
             try:
-                base = arrow.get(content)
+                base = arrow.get(content, "M/D/YYYY")
             except:
                 raise ValueError("Unable to parse date {}".format(content))
 
@@ -42,6 +53,9 @@ def process(raw):
             entry['topic'] = ""
             entry['project'] = ""
             entry['week'] = content
+            mydate = base.replace(weeks=+(int(content)-1))
+            entry['date'] = mydate.format('M/D/YYYY')
+            entry['now'] = inside(mydate)
 
         elif field == 'topic' or field == 'project':
             entry[field] = content

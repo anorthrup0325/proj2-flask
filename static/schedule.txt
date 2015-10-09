@@ -15,7 +15,7 @@ project: Simple Flask web service, packaging with pyvenv and pip
 week: 3
 
 topic: Javascript, packaging, building
-project: tbd
+project: Ajax-based travel planner
 
 week: 4
 
